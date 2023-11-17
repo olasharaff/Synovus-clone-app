@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.cdnfonts.com/css/galano-grotesque-alt');
+
+
+body {
+font-family: 'Galano Grotesque Alt', 'Trebuchet MS', sans-serif;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    color: #a8dadc;
+
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background-color: rgba(255, 0, 0, 0.459) !important;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25%,
+    75% {
+        transform: translateX(15px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+.hover\:animate-shake:hover {
+    animation: shake 0.5s;
+}
+
+.hover\:animate-shake:hover {
+    animation: shake 0.5s;
+}
