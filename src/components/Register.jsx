@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import OAuth from '../components/OAuth'
 import {useNavigate} from "react-router-dom"
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth'
@@ -9,10 +9,12 @@ import { toast } from 'react-toastify'
 export default function Register() {
   const navigate = useNavigate()
   const [isFormData, setIsFormData] =useState({
-    full_Name: "",
+    first_Name: "",
+    last_Name: "",
     email: "",
     password: "",
   })
+  const [greetingMessage, setGreetingMessage] = useState("")
   const [unUsedForm, setUnSedForm] = useState({
     account_type: "",
     account_number: "",
@@ -21,7 +23,7 @@ export default function Register() {
 
   })
   const {account_type, account_number, ssn, number} = unUsedForm
-  const {full_Name, email, password} = isFormData
+  const {first_Name,last_Name, email, password} = isFormData
   const handleSelectChange = (e) => {
     setIsFormData((prevState) => ({
       ...prevState,
@@ -44,7 +46,7 @@ export default function Register() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      updateProfile(auth.currentUser, {displayName: full_Name})
+      updateProfile(auth.currentUser, {displayName: `${first_Name} ${last_Name}`})
 
       const formDataCopy = {...isFormData};
       delete formDataCopy.password
@@ -64,12 +66,32 @@ export default function Register() {
     }
 
   }
+  // CREATING CURRENT TIME
+ useEffect(() => {
+const date = new Date();
+const hour = date.getHours();
+
+if (hour < 12) {
+  setGreetingMessage("Good Morning");
+} else if (hour < 18) {
+  setGreetingMessage("Good Afternoon");
+} else if (hour < 24) {
+  setGreetingMessage("Good Evening");
+}
+ },[])
+  
 
   return (
     <div>
       <div className="mt-10 mb-10">
-        <h1 className="text-center mb-3">Welcome to self Enrollment</h1>
-        <p className="text-center mb-6">Please Enter your credentials</p>
+        <h1 className="text-center text-4xl mb-3 text-red-800 font-medium">
+          {greetingMessage} 
+        </h1>
+        <h1 className="text-center text-4xl  text-red-800 font-medium">
+          Welcome to{" "}
+          <span className="text-font text-red-400">Self </span>Enrollment
+        </h1>
+        <p className="text-center mb-6 font-semibold">Please Enter your credentials</p>
         <div className="max-w-3xl px-9 mx-auto">
           <form onSubmit={onSubmitSignUp}>
             <div className="flex justify-center gap-10">
@@ -89,6 +111,7 @@ export default function Register() {
                     className="w-full rounded-md px-5 py-3  border-none bg-gray-100 hover:bg-gray-200 hover:shadow-sm transition duration-150 ease-in-out"
                   />
                 </div>
+
                 <div className="mb-6">
                   <label className="text-sm">
                     Full Name{" "}
@@ -96,8 +119,8 @@ export default function Register() {
                   </label>
                   <input
                     type="text"
-                    id="full_Name"
-                    value={full_Name}
+                    id="first_Name"
+                    value={first_Name}
                     placeholder="Full Name"
                     onChange={handleSelectChange}
                     className="w-full rounded-md px-5 py-3  border-none bg-gray-100 hover:bg-gray-200 hover:shadow-sm transition duration-150 ease-in-out"
@@ -146,8 +169,23 @@ export default function Register() {
                     id="account_number"
                     value={account_number}
                     onChange={handleUnUseFormData}
+                    disabled
                     placeholder="Account Number"
                     className="w-full rounded-md px-5 py-3 border-none bg-gray-100 hover:bg-gray-200 hover:shadow-sm transition duration-150 ease-in-out"
+                  />
+                </div>
+                <div className="mb-6">
+                  <label className="text-sm">
+                    Last Name
+                    <span className="text-[#7234F5] text- sm"> *</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="last_Name"
+                    value={last_Name}
+                    onChange={handleSelectChange}
+                    placeholder="Last Name"
+                    className="w-full rounded-md px-5 py-3  border-none bg-gray-100 hover:bg-gray-200 hover:shadow-sm transition duration-150 ease-in-out"
                   />
                 </div>
                 <div className="mb-6">
@@ -180,7 +218,7 @@ export default function Register() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-10 justify-center">
+            <div className="flex flex-wrap gap-10 justify-center">
               <button className="w-[300px] p-2 mb-3 rounded-md bg-red-500 text-white">
                 <OAuth />
               </button>

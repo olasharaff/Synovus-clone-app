@@ -4,30 +4,33 @@ import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {
-  const auth = getAuth()
+  const auth = getAuth();
   const navigate = useNavigate();
   const [isFormData] = useState({
-    name: auth.currentUser.displayName
-  })
-  const {name} = isFormData
+    name: auth.currentUser.displayName,
+  });
+  const { name } = isFormData;
+  // Splitting the name into an array of [first, last]
+  const nameParts = name.split(" ");
 
-  const OnLogOut = () =>{
-    auth.signOut()
-    navigate('/')
+  // Now you can use firstName and lastName in your component
+  const firstName = nameParts[0];
+  const lastName = nameParts.slice(1).join(" ");
 
-  }
-
- 
+  const OnLogOut = () => {
+    auth.signOut();
+    navigate("/");
+  };
 
   return (
     <div className="px-3 my-10 overflow-hidden">
       <h1 className="lg:text-5xl text-3xl text-center font-medium text-red-500">
-        Welcome!!
+        Welcome {firstName}!!
       </h1>
       <div className="max-w-7xl  p-5 bg-slate-100  my-10 rounded-lg ">
         <div className="max-w-xs bg-red-500 shadow-lg p-5 rounded-2xl text-white transition duration-100 ease-in-out hover:shadow-2xl mb-5">
           <h1 className="text-3xl uppercase mb-2 hover:animate-shake">
-            {name}
+            {firstName} {lastName}
           </h1>
           <p className="font-bold">
             Acc:{" "}
