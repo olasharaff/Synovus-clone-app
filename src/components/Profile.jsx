@@ -20,8 +20,8 @@ export default function Profile() {
  
 
   return (
-    <div className="px-3">
-      <h1 className="text-5xl text-center font-medium text-red-500">
+    <div className="px-3 my-10 overflow-hidden">
+      <h1 className="lg:text-5xl text-3xl text-center font-medium text-red-500">
         Welcome!!
       </h1>
       <div className="max-w-7xl  p-5 bg-slate-100  my-10 rounded-lg ">
@@ -98,14 +98,14 @@ export default function Profile() {
           <div className="border-t-4 border-red-700 ">
             <div className="flex justify-between  border-2 border-white shadow-xl p-3 rounded-md my-5">
               <div>
-                <h1 className="whitespace-nowrap font-medium text-2xl mb-3">
+                <h1 className=" font-medium lg:text-2xl text-xl mb-3">
                   Last Transactions
                 </h1>
-                <p className="mb-1">Starbuck</p>
-                <p className="mb-1">Amazon</p>
-                <p className="mb-1">Card Payment</p>
-                <p className="mb-1">Google Ad services</p>
-                <p className="mb-1">AT&T wireless</p>
+                <p className="mb-1 lg:text-base text-sm">Starbuck</p>
+                <p className="mb-1 lg:text-base text-sm">Amazon</p>
+                <p className="mb-1 lg:text-base text-sm">Card Payment</p>
+                <p className="mb-1 lg:text-base text-sm">Google Ad services</p>
+                <p className="mb-1 lg:text-base text-sm">AT&T wireless</p>
               </div>
               <div className="text-end">
                 <div className="whitespace-nowrap flex flex-wrap font-medium mb-3 gap-4">
@@ -118,11 +118,11 @@ export default function Profile() {
                     $1430.00
                   </p>
                 </div>
-                <p className="mb-1">-$13.80</p>
-                <p className="mb-1">-$14.99</p>
-                <p className="mb-1">-$253.6</p>
-                <p className="mb-1">-$12.00</p>
-                <p className="mb-1">-$108.00</p>
+                <p className="mb-1 lg:text-base text-sm">-$13.80</p>
+                <p className="mb-1 lg:text-base text-sm">-$14.99</p>
+                <p className="mb-1 lg:text-base text-sm">-$253.6</p>
+                <p className="mb-1 lg:text-base text-sm">-$12.00</p>
+                <p className="mb-1 lg:text-base text-sm">-$108.00</p>
               </div>
             </div>
           </div>

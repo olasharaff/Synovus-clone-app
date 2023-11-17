@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import logo from '../assets/synovus-logo-red.svg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {FaBars} from "react-icons/fa"
 import {AiOutlineClose} from "react-icons/ai"
-import PopSignIn from './PopSignIn';
+
 
 
 
 export default function NavBar() {
     const [dropdown, setDropdown] = useState(false)
     const [toggleBar, setToggleBar] = useState(false)
-    const [logToggle, setLogToggle] = useState(false)
+   
+    const navigate = useNavigate()
 
     const handleToggle = () =>{
         setToggleBar(!toggleBar)
     }
     const handleLogToggle = () => {
-      setLogToggle(!logToggle)
+      navigate('/login')
     }
 
     const handleMouseEnter = () => {
@@ -69,9 +70,9 @@ export default function NavBar() {
             <p>contact us</p>
           </div>
           <button className="lg:hidden" onClick={handleLogToggle}>
-            <Link>Log In</Link>
+            Log In
           </button>
-          {logToggle && (<PopSignIn />)}
+          
         </div>
         {toggleBar && (
           <div className="bg-[#3a3a3a] fixed w-full h-full lg:hidden ">

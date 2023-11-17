@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
+import PopSignIn from "./components/PopSignIn";
 
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route path="/login" element={<PopSignIn/>  } />
           <Route path="/register" element={<Register />} />
+          
         </Routes>
         <Footer />
       </Router>
