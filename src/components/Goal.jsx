@@ -3,8 +3,8 @@ import React from 'react'
 export default function Goal() {
   return (
     <div className="flex justify-end">
-      <div className="max-w-5xl flex px-6 gap-4 mb-8 border-t-8 border-red-500 py-36">
-        <div className="max-w-xs px-3">
+      <div className="max-w-5xl flex flex-wrap px-6 gap-4 mb-8 border-t-8 border-red-500 py-36">
+        <div className="lg:max-w-xs max-w-lg px-3">
           <h1 className="text-6xl text-red-500 mb-6">
             Let's get to know each other
           </h1>

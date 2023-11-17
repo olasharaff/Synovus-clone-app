@@ -3,7 +3,7 @@ import logo from '../assets/synovus-logo-red.svg'
 import { Link } from 'react-router-dom';
 import {FaBars} from "react-icons/fa"
 import {AiOutlineClose} from "react-icons/ai"
-import SignIn from './SignIn';
+import PopSignIn from './PopSignIn';
 
 
 
@@ -71,7 +71,7 @@ export default function NavBar() {
           <button className="lg:hidden" onClick={handleLogToggle}>
             <Link>Log In</Link>
           </button>
-          {logToggle && <SignIn isVisible={logToggle} />}
+          {logToggle && (<PopSignIn />)}
         </div>
         {toggleBar && (
           <div className="bg-[#3a3a3a] fixed w-full h-full lg:hidden ">

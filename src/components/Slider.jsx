@@ -26,7 +26,7 @@ export default function Slider() {
                 className="w-full object-cover bg-no-repeat bg-cover"
               />
             </div>
-            <div className="absolute z-40 right-16 -bottom-3 max-w-lg  bg-[#202221] px-6 py-4 text-white h-[300px] opacity-90">
+            <div className="absolute z-40 overflow-hidden right-16 -bottom-3 max-w-lg  bg-[#202221] px-6 py-4 text-white h-[300px] opacity-90">
               <h1 className="text-4xl font-bold mb-4">{item.header}</h1>
               <p className="text-sm mb-6">{item.content}</p>
               <button className="mb-6 border-2 border-white px-6 py-3 rounded-lg">

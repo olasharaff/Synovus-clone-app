@@ -9,26 +9,26 @@ export default function Footer() {
     <footer className="bg-[#f2f2f2]">
       <div className="flex max-w-full mx-auto p-7 justify-between flex-wrap">
         <div>
-          <img src={logo} alt="footer-logo" className="w-44" />
+          <img src={logo} alt="footer-logo" className="w-44 mb-10 lg:text-start text-center" />
         </div>
 
-        <div className="flex lg:gap-36 gap-24">
+        <div className="flex flex-wrap lg:gap-36 gap-10">
           <div>
-            <h1 className="mb-6 font-extrabold text-lg">Customer Service</h1>
-            <p className="mb-3">Contact us</p>
-            <p className="mb-3">Find a location</p>
-            <p className="mb-3">Safety and security </p>
-            <p className="mb-3">Website terms of use</p>
-            <p className="mb-3">Privacy </p>
-            <p className="mb-3">Accessible Banking</p>
+            <h1 className="lg:mb-6 mb-3 font-extrabold text-lg">Customer Service</h1>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Contact us</p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Find a location</p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Safety and security </p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Website terms of use</p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Privacy </p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Accessible Banking</p>
           </div>
           <div>
-            <h1 className="mb-6 font-extrabold text-lg">Synovus</h1>
-            <p className="mb-3">Investor Relations </p>
-            <p className="mb-3">Careers</p>
-            <p className="mb-3">Media</p>
-            <p className="mb-3">Community outreach</p>
-            <p className="mb-3">COVID-19</p>
+            <h1 className="lg:mb-6 mb-3 font-extrabold text-lg">Synovus</h1>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Investor Relations </p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Careers</p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Media</p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">Community outreach</p>
+            <p className="lg:mb-3 mb-1 lg:text-base text-sm">COVID-19</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex mb-6 gap-2">
