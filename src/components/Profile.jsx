@@ -1,7 +1,9 @@
 import { getAuth } from 'firebase/auth'
 import React, { useState } from 'react'
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Popup from 'reactjs-popup';
+import "reactjs-popup/dist/index.css";
 
 export default function Profile() {
   const auth = getAuth();
@@ -21,6 +23,10 @@ export default function Profile() {
     auth.signOut();
     navigate("/");
   };
+  const handleAccount = (e) => {
+    e.preventDefault();
+    
+  }
 
   return (
     <div className="px-3 my-10 overflow-hidden">
@@ -54,49 +60,220 @@ export default function Profile() {
             Account Summary
           </h1>
           <div>
-            <div className="flex gap-10  flex-wrap justify-between border-2 border-white  p-3 rounded-md cursor-pointer hover:shadow-2xl shadow">
-              <div>
-                <h1 className="text-gray-700 text-2xl font-medium mb-2">
-                  Investment
-                </h1>
-                <p className="lg:text-5xl text-3xl font-semibold">
-                  $<span>13,500,000</span>
-                </p>
-                <p className="text-rose-500 lg:text-sm text-xs">
-                  pending.......
-                </p>
-              </div>
-              <div>
-                <h1 className="text-yellow-500 text-2xl font-medium">Manage</h1>
-              </div>
-            </div>
+            <Popup
+              trigger={
+                <div className="flex gap-10  flex-wrap justify-between border-2 border-white  p-3 rounded-md cursor-pointer hover:shadow-2xl shadow">
+                  <div>
+                    <h1 className="text-gray-700 text-2xl font-medium mb-2">
+                      Investment
+                    </h1>
+                    <p className="lg:text-5xl text-3xl font-semibold">
+                      $<span>23,475,000</span>
+                    </p>
+                    <p className="text-rose-500 lg:text-sm text-xs">
+                      pending.......
+                    </p>
+                  </div>
+                  <div>
+                    <h1 className="text-yellow-500 text-2xl font-medium">
+                      Manage
+                    </h1>
+                  </div>
+                </div>
+              }
+              modal
+              nested
+            >
+              {(close) => (
+                <div className="modal">
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+                  <div className="header"> Transfer fund</div>
+                  <div className="content">
+                    <h1 className="text-base">
+                      <span className="text-red-500 font-semibold">Ops!!</span>{" "}
+                      Your investment is still pending.{" "}
+                    </h1>
+                  </div>
+                  <div className="actions">
+                    <Link to="https://www.synovus.com/contact-us/" target='_blank'>
+                      {" "}
+                      <button className="button px-6 py-2 bg-red-500 text-white rounded-md mr-5 hover:bg-black">
+                        Contact Bank
+                      </button>
+                    </Link>
+
+                    <button
+                      className="button px-6 py-2 bg-green-500 text-white rounded-md hover:bg-black"
+                      onClick={() => {
+                        console.log("modal closed ");
+                        close();
+                      }}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              )}
+            </Popup>
           </div>
           <div>
-            <div className="flex gap-10  flex-wrap justify-between border-2 border-white  p-3 rounded-md my-5 cursor-pointer hover:shadow-2xl shadow">
-              <div>
-                <h1 className="text-gray-700 text-2xl font-medium mb-2">
-                  Checking Account
-                </h1>
-                <p className="lg:text-5xl text-3xl font-semibold">$87.00</p>
-                <p className="text-green-500 lg:text-sm text-xs">
-                  available cash
-                </p>
-              </div>
-              <div>
-                <h1 className="text-yellow-500 text-2xl font-medium">Manage</h1>
-              </div>
-            </div>
-            <div className="flex gap-10  flex-wrap justify-between border-2 border-white p-3 rounded-md my-5 cursor-pointer hover:shadow-2xl shadow">
-              <div>
-                <h1 className="text-gray-700 text-2xl font-medium mb-2">
-                  Saving Account
-                </h1>
-                <p className="lg:text-5xl text-3xl font-semibold">$4.21</p>
-              </div>
-              <div>
-                <h1 className="text-yellow-500 text-2xl font-medium">Manage</h1>
-              </div>
-            </div>
+            <Popup
+              trigger={
+                <div className="flex gap-10  flex-wrap justify-between border-2 border-white  p-3 rounded-md my-5 cursor-pointer hover:shadow-2xl shadow">
+                  <div>
+                    <h1 className="text-gray-700 text-2xl font-medium mb-2">
+                      Checking Account
+                    </h1>
+                    <p className="lg:text-5xl text-3xl font-semibold">$87.00</p>
+                    <p className="text-green-500 lg:text-sm text-xs">
+                      available cash
+                    </p>
+                  </div>
+                  <div>
+                    <h1 className="text-yellow-500 text-2xl font-medium">
+                      Manage
+                    </h1>
+                  </div>
+                </div>
+              }
+              modal
+              nested
+            >
+              {(close) => (
+                <div className="modal">
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+                  <div className="header"> Transfer Fund</div>
+                  <div className="content">
+                    <div>
+                      <h1 className="font-medium ">
+                        <span className="text-red-500">Zelle</span> is not
+                        available at a moment
+                      </h1>
+                    </div>
+                    <h1 className="text-center">
+                      Do you want to make transfer?
+                    </h1>
+                    <p className="text-center">
+                      Yes- enter your account number
+                    </p>
+                    <input
+                      type="number"
+                      onChange={handleAccount}
+                      placeholder="Enter Account Number"
+                      className="border-2 border-gray-300 rounded-md p-2 my-2"
+                    />
+                  </div>
+                  <div className="actions">
+                    <Popup
+                      trigger={
+                        <button className="button px-6 py-2 bg-green-500 text-white rounded-md hover:bg-black">
+                          {" "}
+                          Transfer{" "}
+                        </button>
+                      }
+                      position="top center fixed"
+                      nested
+                    >
+                      <div className="max-w-lg">
+                        <p>
+                          Link sent! Check your phone to complete the
+                          transaction.
+                        </p>
+                      </div>
+                    </Popup>
+                    <button
+                      className="button bg-red-500 text-white px-6 py-2 rounded-md ml-5 hover:bg-black"
+                      onClick={() => {
+                        console.log("modal closed ");
+                        close();
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+            </Popup>
+
+            <Popup
+              trigger={
+                <div className="flex gap-10  flex-wrap justify-between border-2 border-white p-3 rounded-md my-5 cursor-pointer hover:shadow-2xl shadow">
+                  <div>
+                    <h1 className="text-gray-700 text-2xl font-medium mb-2">
+                      Saving Account
+                    </h1>
+                    <p className="lg:text-5xl text-3xl font-semibold">$4.21</p>
+                  </div>
+                  <div>
+                    <h1 className="text-yellow-500 text-2xl font-medium">
+                      Manage
+                    </h1>
+                  </div>
+                </div>
+              }
+              modal
+              nested
+            >
+              {(close) => (
+                <div className="modal">
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+                  <div className="header"> Move your fund </div>
+                  <div className="content">
+                    <div>
+                      <h1 className="font-medium  mb-5 text-sm">
+                        {" "}
+                        You can only the money in the
+                        <span className="text-red-500"> Savings</span> to{" "}
+                        <span className="text-red-500">Checking</span>
+                      </h1>
+                    </div>
+                    <h1 className="text-center text-base">
+                      Do you want to make Move?
+                    </h1>
+
+                    <input
+                      type="number"
+                      onChange={handleAccount}
+                      placeholder="Enter amount to move"
+                      className="border-2 border-gray-300 rounded-md p-2 my-2"
+                    />
+                  </div>
+                  <div className="actions">
+                    <Popup
+                      trigger={
+                        <button className="button px-6 py-2 bg-green-500 text-white rounded-md hover:bg-black">
+                          {" "}
+                          Move it{" "}
+                        </button>
+                      }
+                      position="top center fixed"
+                      nested
+                    >
+                      <div className="max-w-lg">
+                        <p>
+                          Move! It's will reflect soon in your checking account
+                        </p>
+                      </div>
+                    </Popup>
+                    <button
+                      className="button bg-red-500 text-white px-6 py-2 rounded-md ml-5 hover:bg-black"
+                      onClick={() => {
+                        console.log("modal closed ");
+                        close();
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+            </Popup>
           </div>
           <div className="border-t-4 border-red-700 ">
             <div className="flex justify-between  border-2 border-white shadow-xl p-3 rounded-md my-5">

@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../assets/synovus-logo-red.svg'
 import { Link, useNavigate } from 'react-router-dom';
 import {FaBars} from "react-icons/fa"
 import {AiOutlineClose} from "react-icons/ai"
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 
 
 
@@ -10,14 +12,21 @@ import {AiOutlineClose} from "react-icons/ai"
 export default function NavBar() {
     const [dropdown, setDropdown] = useState(false)
     const [toggleBar, setToggleBar] = useState(false)
-   
+    const [isPage, setIsPage] = useState("log-in")
+    
+
+   const auth = getAuth()
     const navigate = useNavigate()
 
     const handleToggle = () =>{
         setToggleBar(!toggleBar)
     }
     const handleLogToggle = () => {
-      navigate('/login')
+    if (isPage === "Profile"){
+     
+    } else {
+      navigate("/login")
+    }
     }
 
     const handleMouseEnter = () => {
@@ -27,6 +36,18 @@ export default function NavBar() {
     const handleMouseLeave = () => {
       setDropdown(false);
     };
+
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setIsPage("Profile")
+        } else {
+          setIsPage("log-in")
+        }
+      })
+
+    },[auth]);
+
   return (
     <>
       <header className="bg-slate-50">
@@ -69,10 +90,10 @@ export default function NavBar() {
             <p>find location</p>
             <p>contact us</p>
           </div>
-          <button className="lg:hidden" onClick={handleLogToggle}>
-            Log In
-          </button>
           
+          <button className="lg:hidden" onClick={handleLogToggle}>
+            {isPage }
+          </button>
         </div>
         {toggleBar && (
           <div className="bg-[#3a3a3a] fixed w-full h-full lg:hidden ">
