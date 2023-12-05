@@ -6,8 +6,11 @@ import {serverTimestamp, doc, setDoc} from "firebase/firestore"
 import {db} from "../firebase"
 import { toast } from 'react-toastify'
 
+
+
 export default function Register() {
   const navigate = useNavigate()
+ 
   const [isFormData, setIsFormData] =useState({
     first_Name: "",
     last_Name: "",
@@ -46,7 +49,7 @@ export default function Register() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      updateProfile(auth.currentUser, {displayName: `${first_Name} ${last_Name}`})
+      await updateProfile(auth.currentUser, {displayName: `${first_Name} ${last_Name}`})
 
       const formDataCopy = {...isFormData};
       delete formDataCopy.password
@@ -68,18 +71,19 @@ export default function Register() {
   }
   // CREATING CURRENT TIME
  useEffect(() => {
-const date = new Date();
-const hour = date.getHours();
+   const date = new Date();
+   const hour = date.getHours();
 
-if (hour < 12) {
-  setGreetingMessage("Good Morning");
-} else if (hour < 18) {
-  setGreetingMessage("Good Afternoon");
-} else if (hour < 24) {
-  setGreetingMessage("Good Evening");
-}
- },[])
-  
+   if (hour < 12) {
+     setGreetingMessage("Good Morning");
+   } else if (hour < 18) {
+     setGreetingMessage("Good Afternoon");
+   } else if (hour < 24) {
+     setGreetingMessage("Good Evening");
+   }
+ }, [setGreetingMessage]);
+
+ 
 
   return (
     <div>

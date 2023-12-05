@@ -5,10 +5,6 @@ import {FaBars} from "react-icons/fa"
 import {AiOutlineClose} from "react-icons/ai"
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-
-
-
-
 export default function NavBar() {
     const [dropdown, setDropdown] = useState(false)
     const [toggleBar, setToggleBar] = useState(false)
@@ -42,7 +38,7 @@ export default function NavBar() {
         if (user) {
           setIsPage("Profile")
         } else {
-          setIsPage("log-in")
+          setIsPage("Log-In")
         }
       })
 
