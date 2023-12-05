@@ -221,8 +221,8 @@ export default function Register() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-10 justify-center">
-              <button className="w-[300px] p-2 mb-3 rounded-md  bg-red-500">
+            <div className="flex flex-wrap gap-5 justify-center">
+              <button className="w-[300px] p-5 mb-3 rounded-md  bg-red-500">
                 {" "}
                 already have account?
                 <Link to="/login" className="underline text-white">
@@ -230,12 +230,11 @@ export default function Register() {
                   Login{" "}
                 </Link>
               </button>
+              <button className="w-[300px] p-5 mb-3 rounded-md bg-red-500 text-white">
+                Register
+              </button>
               <button className="w-[300px] p-2 mb-3 rounded-md bg-red-500 text-white">
                 <OAuth />
-              </button>
-
-              <button className="w-[300px] p-2 mb-3 rounded-md bg-red-500 text-white">
-                Register
               </button>
             </div>
           </form>
