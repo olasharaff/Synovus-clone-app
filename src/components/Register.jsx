@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import OAuth from '../components/OAuth'
-import {useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth'
 import {serverTimestamp, doc, setDoc} from "firebase/firestore"
 import {db} from "../firebase"
@@ -57,11 +57,7 @@ export default function Register() {
 
       await setDoc(doc(db, "users", user.id), formDataCopy)
       toast.success("Account created successfully")
-      navigate("/profile")
-
-
-    
-      
+      navigate("/")
     } catch (error) {
       toast.error("Error creating account")
       console.log("There is problem while creating the account")
@@ -89,13 +85,15 @@ export default function Register() {
     <div>
       <div className="mt-10 mb-10">
         <h1 className="text-center text-4xl mb-3 text-red-800 font-medium">
-          {greetingMessage} 
+          {greetingMessage}
         </h1>
         <h1 className="text-center text-4xl  text-red-800 font-medium">
-          Welcome to{" "}
-          <span className="text-font text-red-400">Self </span>Enrollment
+          Welcome to <span className="text-font text-red-400">Self </span>
+          Enrollment
         </h1>
-        <p className="text-center mb-6 font-semibold">Please Enter your credentials</p>
+        <p className="text-center mb-6 font-semibold">
+          Please Enter your credentials
+        </p>
         <div className="max-w-3xl px-9 mx-auto">
           <form onSubmit={onSubmitSignUp}>
             <div className="flex justify-center gap-10">
@@ -222,10 +220,20 @@ export default function Register() {
                 </div>
               </div>
             </div>
+
             <div className="flex flex-wrap gap-10 justify-center">
+              <button className="w-[300px] p-2 mb-3 rounded-md  bg-red-500">
+                {" "}
+                already have account?
+                <Link to="/login" className="underline text-white">
+                  {" "}
+                  Login{" "}
+                </Link>
+              </button>
               <button className="w-[300px] p-2 mb-3 rounded-md bg-red-500 text-white">
                 <OAuth />
               </button>
+
               <button className="w-[300px] p-2 mb-3 rounded-md bg-red-500 text-white">
                 Register
               </button>
