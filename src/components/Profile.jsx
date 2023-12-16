@@ -68,7 +68,7 @@ export default function Profile() {
                       Investment
                     </h1>
                     <p className="lg:text-5xl text-3xl font-semibold">
-                      $<span>828,000</span>
+                      $<span>23,475,000</span>
                     </p>
                     <p className="text-rose-500 lg:text-sm text-xs">
                       pending.......
