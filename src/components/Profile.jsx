@@ -43,7 +43,7 @@ export default function Profile() {
             <span className="font-light hover:animate-shake ">215052432</span>
           </p>
           <p className="font-bold hover:animate-shake ">
-            SSN: <span className="hover:animate-shake">XXX-XX-7333</span>
+            SSN: <span className="hover:animate-shake">XXX-XX-7459</span>
           </p>
           <div>
             <button
